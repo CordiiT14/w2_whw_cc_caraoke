@@ -11,6 +11,14 @@ class TestRoom(unittest.TestCase):
         self.room2 = Room("Apple")
         self.room3 = Room("Kiwi")
 
+        self.guest_1 = Guest("Ella")
+        self.guest_2 = Guest("Adam")
+        self.guest_3 = Guest("Laila")
+        self.guest_4 = Guest("Robbie")
+        self.guest_5 = Guest("Bex")
+        self.guest_6 = Guest("Katie")
+        self.guest_7 = Guest("Kev")
+
     def test_room_has_name(self):
         self.assertEqual("Orange", self.room1.room_name)
 
@@ -27,45 +35,43 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(0, self.room1.number_of_guests_in_room())
 
     def test_check_in_guests_to_room(self):
-        guest_1 = Guest("Ella")
-        self.room1.check_in_guest_to_room(guest_1)
+        self.room1.check_in_guest_to_room(self.guest_1)
         self.assertEqual(1, self.room1.number_of_guests_in_room())
 
     def test_check_in_multiple_guests_to_room(self):
-        guest_1 = Guest("Ella")
-        guest_2 = Guest("Adam")
-        guest_3 = Guest("Laila")
-        guest_4 = Guest("Robbie")
-        self.room1.check_in_guest_to_room(guest_1)
-        self.room1.check_in_guest_to_room(guest_2)
-        self.room1.check_in_guest_to_room(guest_3)
-        self.room1.check_in_guest_to_room(guest_4)
+        self.room1.check_in_guest_to_room(self.guest_1)
+        self.room1.check_in_guest_to_room(self.guest_2)
+        self.room1.check_in_guest_to_room(self.guest_3)
+        self.room1.check_in_guest_to_room(self.guest_4)
         self.assertEqual(4, self.room1.number_of_guests_in_room())
 
     def test_check_in_multiple_guests_to_different_rooms(self):
-        guest_1 = Guest("Bex")
-        guest_2 = Guest("Kev")
-        guest_3 = Guest("Katie")
-        guest_4 = Guest("Ella")
-        self.room1.check_in_guest_to_room(guest_1)
-        self.room1.check_in_guest_to_room(guest_2)
-        self.room2.check_in_guest_to_room(guest_3)
-        self.room3.check_in_guest_to_room(guest_4)
+        self.room1.check_in_guest_to_room(self.guest_1)
+        self.room1.check_in_guest_to_room(self.guest_2)
+        self.room2.check_in_guest_to_room(self.guest_3)
+        self.room3.check_in_guest_to_room(self.guest_4)
         self.assertEqual(2, self.room1.number_of_guests_in_room())
         self.assertEqual(1, self.room2.number_of_guests_in_room())
         self.assertEqual(1, self.room3.number_of_guests_in_room())
 
     def test_check_out_guests(self):
-        guest_1 = Guest("Bex")
-        self.room1.check_in_guest_to_room(guest_1)
-        self.room1.check_out_guests(guest_1)
+        self.room1.check_in_guest_to_room(self.guest_1)
+        self.room1.check_out_guests(self.guest_1)
         self.assertEqual(0, self.room1.number_of_guests_in_room())
 
     def test_check_out_guests_room_not_empty(self):
-        guest_1 = Guest("Bex")
-        guest_2 = Guest("Katie")
-        self.room1.check_in_guest_to_room(guest_1)
-        self.room1.check_in_guest_to_room(guest_2)
-        self.room1.check_out_guests(guest_1)
+        self.room1.check_in_guest_to_room(self.guest_1)
+        self.room1.check_in_guest_to_room(self.guest_2)
+        self.room1.check_out_guests(self.guest_1)
         self.assertEqual(1, self.room1.number_of_guests_in_room())
 
+    def test_check_out_one_guest_from_one_room(self):
+        self.room1.check_in_guest_to_room(self.guest_1)
+        self.room1.check_in_guest_to_room(self.guest_2)
+        self.room1.check_in_guest_to_room(self.guest_3)
+        self.room2.check_in_guest_to_room(self.guest_4)
+        self.room2.check_in_guest_to_room(self.guest_5)
+        self.room1.check_out_guests(self.guest_2)
+        self.assertEqual(2, self.room1.number_of_guests_in_room())
+        self.assertEqual(2, self.room2.number_of_guests_in_room())
+    
