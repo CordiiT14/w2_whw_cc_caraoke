@@ -1,7 +1,7 @@
 import unittest
 from classes.guest import Guest
 
-def TestGuest(unittest.TestCase):
+class TestGuest(unittest.TestCase):
 
     def setUp(self):
         self.guest1 = Guest("Ella")
@@ -11,4 +11,3 @@ def TestGuest(unittest.TestCase):
         self.guest5 = Guest("Bex")
         self.guest6 = Guest("Katie")
         self.guest7 = Guest("Kev")
-        
