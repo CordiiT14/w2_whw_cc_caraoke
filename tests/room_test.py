@@ -41,3 +41,16 @@ class TestRoom(unittest.TestCase):
         self.room1.check_in_guest_to_room(guest_3)
         self.room1.check_in_guest_to_room(guest_4)
         self.assertEqual(4, len(self.room1.guests))
+
+    def test_check_in_multiple_guests_to_different_rooms(self):
+        guest_1 = Guest("Bex")
+        guest_2 = Guest("Kev")
+        guest_3 = Guest("Katie")
+        guest_4 = Guest("Ella")
+        self.room1.check_in_guest_to_room(guest_1)
+        self.room1.check_in_guest_to_room(guest_2)
+        self.room2.check_in_guest_to_room(guest_3)
+        self.room3.check_in_guest_to_room(guest_4)
+        self.assertEqual(2, len(self.room1.guests))
+        self.assertEqual(1, len(self.room2.guests))
+        self.assertEqual(1, len(self.room3.guests))
