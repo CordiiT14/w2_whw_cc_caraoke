@@ -2,6 +2,7 @@ import unittest
 from classes.room import Room
 from classes.song import Song
 from classes.guest import Guest
+from tests.guest_test import TestGuest
 
 class TestRoom(unittest.TestCase):
 
@@ -21,3 +22,10 @@ class TestRoom(unittest.TestCase):
 
     def test_room_has_empty_song_list(self):
         self.assertEqual(0, len(self.room2.songs))
+    
+    def test_number_of_guests_in_room(self):
+        self.assertEqual(0, self.room1.number_of_guests_in_room())
+
+    # def test_check_in_guests_to_room(self):
+    #     check_in_guest_to_room(self.room1, TestGuest.guest1)
+    #     self.assertEqual(1, len(self.room1))

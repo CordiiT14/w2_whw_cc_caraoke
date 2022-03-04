@@ -6,4 +6,8 @@ class Room:
         self.guests = []
         self.songs = []
 
+    def number_of_guests_in_room(self):
+        return len(self.guests)
 
+    # def check_in_guest_to_room(self, room, guest):
+    #     pass
