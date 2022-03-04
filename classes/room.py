@@ -10,7 +10,10 @@ class Room:
         return len(self.guests)
 
     def check_in_guest_to_room(self, guest):
-        self.guests.append(guest)
+        if self.number_of_guests_in_room() < 5:
+            self.guests.append(guest)
+        else:
+            return "Sorry, no more space. Pick another room."  
 
     def check_out_guests(self, guest):
         self.guests.remove(guest)
@@ -20,3 +23,4 @@ class Room:
 
     def add_song(self, song):
         self.songs.append(song)
+    

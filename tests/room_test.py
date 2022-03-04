@@ -1,3 +1,4 @@
+from optparse import check_builtin
 import unittest
 from classes.room import Room
 from classes.song import Song
@@ -107,4 +108,11 @@ class TestRoom(unittest.TestCase):
         self.room1.add_song(song_1)
         self.room1.add_song(song_2)
         self.assertEqual(2, len(self.room1.songs))
+
         
+# Extension 1 - further testing
+
+    def test_room_is_full(self):
+        self.room1.guests = [Guest("Ella"), Guest("Robbie"), Guest("Laila"), Guest("Bex"), Guest("Katie")]
+        self.assertEqual("Sorry, no more space. Pick another room.", self.room1.check_in_guest_to_room(self.guest_7))
+    
