@@ -75,3 +75,23 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(2, self.room1.number_of_guests_in_room())
         self.assertEqual(2, self.room2.number_of_guests_in_room())
     
+    def test_empty_room(self):
+        self.room1.check_in_guest_to_room(self.guest_1)
+        self.room1.check_in_guest_to_room(self.guest_2)
+        self.room1.check_in_guest_to_room(self.guest_3)
+        self.room2.check_in_guest_to_room(self.guest_4)
+        self.room2.check_in_guest_to_room(self.guest_5)
+        self.room1.empty_room()
+        self.assertEqual(0, self.room1.number_of_guests_in_room())
+        self.assertEqual(2, self.room2.number_of_guests_in_room())
+
+    def test_two_rooms_are_empty(self):
+        self.room1.check_in_guest_to_room(self.guest_1)
+        self.room1.check_in_guest_to_room(self.guest_2)
+        self.room1.check_in_guest_to_room(self.guest_3)
+        self.room2.check_in_guest_to_room(self.guest_4)
+        self.room2.check_in_guest_to_room(self.guest_5)
+        self.room1.empty_room()
+        self.room2.empty_room()
+        self.assertEqual(0, self.room1.number_of_guests_in_room())
+        self.assertEqual(0, self.room2.number_of_guests_in_room())
