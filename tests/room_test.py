@@ -29,7 +29,7 @@ class TestRoom(unittest.TestCase):
     def test_check_in_guests_to_room(self):
         guest_1 = Guest("Ella")
         self.room1.check_in_guest_to_room(guest_1)
-        self.assertEqual(1, len(self.room1.guests))
+        self.assertEqual(1, self.room1.number_of_guests_in_room())
 
     def test_check_in_multiple_guests_to_room(self):
         guest_1 = Guest("Ella")
@@ -40,7 +40,7 @@ class TestRoom(unittest.TestCase):
         self.room1.check_in_guest_to_room(guest_2)
         self.room1.check_in_guest_to_room(guest_3)
         self.room1.check_in_guest_to_room(guest_4)
-        self.assertEqual(4, len(self.room1.guests))
+        self.assertEqual(4, self.room1.number_of_guests_in_room())
 
     def test_check_in_multiple_guests_to_different_rooms(self):
         guest_1 = Guest("Bex")
@@ -51,6 +51,12 @@ class TestRoom(unittest.TestCase):
         self.room1.check_in_guest_to_room(guest_2)
         self.room2.check_in_guest_to_room(guest_3)
         self.room3.check_in_guest_to_room(guest_4)
-        self.assertEqual(2, len(self.room1.guests))
-        self.assertEqual(1, len(self.room2.guests))
-        self.assertEqual(1, len(self.room3.guests))
+        self.assertEqual(2, self.room1.number_of_guests_in_room())
+        self.assertEqual(1, self.room2.number_of_guests_in_room())
+        self.assertEqual(1, self.room3.number_of_guests_in_room())
+
+    # def test_check_out_guests(self):
+    #     guest_1 = Guest("Bex")
+    #     self.room1.check_in_guest_to_room(guest_1)
+    #     self.room1.check_out_guests()
+    #     self.assertEqual(0, self.room1.number_of_guests_in_room())
