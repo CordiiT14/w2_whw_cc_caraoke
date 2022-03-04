@@ -95,3 +95,16 @@ class TestRoom(unittest.TestCase):
         self.room2.empty_room()
         self.assertEqual(0, self.room1.number_of_guests_in_room())
         self.assertEqual(0, self.room2.number_of_guests_in_room())
+
+    def test_add_song_to_room(self):
+        song = Song("Enemy", "Imagine Dragons")
+        self.room1.add_song(song)
+        self.assertEqual(1, len(self.room1.songs))
+
+    def test_add_multiple_songs_to_room(self):
+        song_1 = Song("Enemy", "Imagine Dragons")
+        song_2 = Song("Lovelost", "Margo")
+        self.room1.add_song(song_1)
+        self.room1.add_song(song_2)
+        self.assertEqual(2, len(self.room1.songs))
+        

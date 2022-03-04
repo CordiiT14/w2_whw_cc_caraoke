@@ -17,3 +17,6 @@ class Room:
 
     def empty_room(self):
         self.guests.clear()
+
+    def add_song(self, song):
+        self.songs.append(song)
