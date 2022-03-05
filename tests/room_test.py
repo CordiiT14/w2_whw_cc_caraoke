@@ -12,13 +12,13 @@ class TestRoom(unittest.TestCase):
         self.room2 = Room("Apple")
         self.room3 = Room("Kiwi")
 
-        self.guest_1 = Guest("Ella")
-        self.guest_2 = Guest("Adam")
-        self.guest_3 = Guest("Laila")
-        self.guest_4 = Guest("Robbie")
-        self.guest_5 = Guest("Bex")
-        self.guest_6 = Guest("Katie")
-        self.guest_7 = Guest("Kev")
+        self.guest_1 = Guest("Ella", 50)
+        self.guest_2 = Guest("Adam", 25)
+        self.guest_3 = Guest("Laila", 100)
+        self.guest_4 = Guest("Robbie", 60)
+        self.guest_5 = Guest("Bex", 30)
+        self.guest_6 = Guest("Katie", 40)
+        self.guest_7 = Guest("Kev", 45)
 
     def test_room_has_name(self):
         self.assertEqual("Orange", self.room1.room_name)
@@ -113,6 +113,7 @@ class TestRoom(unittest.TestCase):
 # Extension 1 - further testing
 
     def test_room_is_full(self):
-        self.room1.guests = [Guest("Ella"), Guest("Robbie"), Guest("Laila"), Guest("Bex"), Guest("Katie")]
+        self.room1.guests = [Guest("Ella", 20), Guest("Robbie", 50), Guest("Laila", 30), Guest("Bex", 50), Guest("Katie", 45)]
         self.assertEqual("Sorry, no more space. Pick another room.", self.room1.check_in_guest_to_room(self.guest_7))
+    
     
