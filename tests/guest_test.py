@@ -23,3 +23,9 @@ class TestGuest(unittest.TestCase):
     
     def test_guest_has_name_4(self):
         self.assertEqual("Robbie", self.guest_4.name)
+
+    def test_guest_has_cash_laila(self):
+        self.assertEqual(100, self.guest_3.wallet)
+
+    def test_guest_has_cash_katie(self):
+        self.assertEqual(40, self.guest_6.wallet)
